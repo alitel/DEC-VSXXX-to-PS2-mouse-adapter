@@ -21,3 +21,13 @@ The full DEC 3000 Alpha AXP system pinout document can be found here (I have inc
 
 https://www.manualslib.com/manual/1744465/Digital-Equipment-Dec-3000-Series.html?page=392#manual
 
+The PS/2 Mouse handling portion of the project (talking to the arduino) is taken directly from this post, and all credit goes to the original creator:
+
+https://bytesnbits.co.uk/arduino-ps2-mouse/
+
+The code used in this project for ps2 mouse communication can be obtained at their github: 
+
+https://github.com/getis/Arduino-PS2-Mouse-Handler
+
+
+
