@@ -2,14 +2,14 @@ DEC VSXXX serial mouse to PS/2 mouse adapter
 --------------------------------------------
 
 The DEC VSXXX-AA (hockey puck/Hawley) and VSXXX-GA serial mice used on some 90s DEC workstations are increasingly hard and expensive to come by.
-This project aims to provide instructions to build a (reasonably) cheap alternative adapter allowing the use of a PS/2 mouse with certain DEC vax and alpha workstatoins.
+This project aims to provide instructions to build a (reasonably) cheap Arduino-based alternative adapter allowing the use of a PS/2 mouse with certain DEC vax and alpha workstatoins.
 In my case, I have a VAXstation 3100 and a DEC 3000 AXP machine, so I have created both the adapter and cables to connect it to both machines. Both systems work well.
 
 This project is a personal adaptation to the work already done by David Kuder. All credit for the design goes to them. Their work can be found at:
 
 https://hackaday.io/project/19576-dec-mouse-adapter.
 
-PS/2 Mouse and Serial DB9 pinouts can be found here:
+PS/2 Mouse and Serial DB9 pinouts can be found here (png files also included in this repository):
 
 https://www.networktechinc.com/technote.html
 
