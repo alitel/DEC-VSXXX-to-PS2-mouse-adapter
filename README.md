@@ -5,7 +5,7 @@ The DEC VSXXX-AA (hockey puck/Hawley) and VSXXX-GA serial mice used on some 90s 
 This project aims to provide instructions to build a (reasonably) cheap Arduino-based alternative adapter allowing the use of a PS/2 mouse with certain DEC vax and alpha workstatoins.
 In my case, I have a VAXstation 3100 and a DEC 3000 AXP machine, so I have created both the adapter and cables to connect it to both machines. Both systems work well.
 
-Please keep in mind, this is a very rough little personal project. I ended up using an Arduino mega because I had one lying around -- it's bulky, but also provides a hardware serial1 port. I was unable to get the SoftwareSerial arduino libraries to work reliably on other Arduinos (eg Uno, nano). An Adruino Nano Every would likely work, and a MUCh smaller and more elegant adapter could be fabricated with a pretty simple pcb using a proper PS2 and db9 connector and a basic max232 type ttl-to-rs232 circuit instead of the separate adapter like I've used.
+Please keep in mind, this is a very rough little personal project. I ended up using an Arduino mega because I had one lying around -- it's bulky, but also provides a hardware serial1 port. I was unable to get the SoftwareSerial arduino libraries to work reliably on other Arduinos (eg Uno, nano). An Arduino Nano Every would likely work, as it has a hardware Serial1 (I believe). With a Nano Every a much smaller and more elegant adapter could be fabricated with a pretty simple pcb using a proper PS2 and db9 connector and a basic max232 type ttl-to-rs232 circuit instead of the separate adapter like I've used.
 
 I also tried (briefly) using an ESP8266 dev board that I had also lying around, but was unable to get stable operation of the PS2 handling software. Probably doable though, and possibly a cheaper route than the Arduino boards.
 
@@ -32,6 +32,26 @@ https://bytesnbits.co.uk/arduino-ps2-mouse/
 The code used in this project for ps2 mouse communication can be obtained at their github: 
 
 https://github.com/getis/Arduino-PS2-Mouse-Handler
+
+The ttl-to-rs232 adapter I've used was bought off Amazon:
+
+https://www.amazon.ca/gp/product/B07BJJ7WB9/ref=ppx_yo_dt_b_search_asin_title?ie=UTF8&psc=1
+
+as was the Arduino Mega proto-board shield (please NOTE: the silkscreen on this board is incorrect, mislabelling the pins in several spots, so ignore it):
+
+https://www.amazon.ca/gp/product/B07DRG2LN2/ref=ppx_yo_dt_b_search_asin_title?ie=UTF8&psc=1
+
+Wiring:
+-------
+
+1) Arduino To PS/2 connector:
+
+2) Arduino to RS232 adapter TTL pins:
+
+3) Vaxstation RS232 DB9 connector to DIN-7 connector:
+
+4) DEC 3000 RS232 DB9 connector to DB15 connector:
+
 
 
 
