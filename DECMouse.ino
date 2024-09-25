@@ -5,27 +5,34 @@
  */
 
 // NOTES:
-// On arduino mega, purple wire ttl-rs232 converter rxd pin -- connect to pin 18 txd1,
-// grey ttl-rs232 converter txd pin connect to mega pin 19 rxd1 -- ie crossover is here)
-// On nano/uno connect purple rxd to pin 3 txd, grey txd wire to pin 2 rxd
-// No luck yet using software serial library -- vaxstation does not see mouse, though commands are received.
+// On arduino mega, connect ttl-rs232 converter rxd pin to mega pin 18 txd1,
+// connect ttl-rs232 converter txd pin to mega pin 19 rxd1 -- ie crossover is here.
+// On nano/uno connect rxd to pin 3 txd, txd wire to pin 2 rxd
+// No luck yet using a software serial library -- vaxstation does not see mouse, though commands are received.
 
+//******************
+//*** IMPORTANT: ***
+//******************
+// I had to comment out the PS2MouseHandler library's polling of the mouse scroll wheel position -- it took MANY milliseconds for some reason 
+// for the function to return and caused the mouse to be very sluggish and unable to produce more than 10 reports/second. Had no need of it, 
+// so didn't investigate further.
+//
 #include <PS2MouseHandler.h>
-//#include <SoftwareSerialParity.h>
+//#include <SoftwareSerialParity.h> // have to use SoftWareSerialParity github project, as we use a wacky parity with the DEC mouse
 
 #define MOUSE_DATA 5
 #define MOUSE_CLOCK 6
 
 PS2MouseHandler mouse(MOUSE_CLOCK, MOUSE_DATA, PS2_MOUSE_REMOTE);
 
-// Set up a new SoftwareSerial object
+// Set up a new SoftwareSerial object if using SoftwareSerial library
 //const byte VS_SERIAL_RX_PIN = 2;
 //const byte VS_SERIAL_TX_PIN = 3;
 //SoftwareSerialParity Serial1 (VS_SERIAL_RX_PIN, VS_SERIAL_TX_PIN);
 
 void setup()
 {
-  //Serial.begin(57600);
+  Serial.begin(57600); // for arduino console reporting (debugging) -- comment out once satisfied
   delay(150);
 
   // Define pin modes for VS_SERIAL_TX/RX
@@ -62,7 +69,7 @@ void loop()
   char my;
 
 /*
-  if(Serial) {
+  if(Serial) { //  loop for PS2 mouse testing, comment out once satisfied
     mouse.get_data();
     Serial.print(mouse.device_id()); // device id
     Serial.print(":");
@@ -167,7 +174,7 @@ void loop()
   // These may need tweaking -- 
   // in Prompt mode (D): up to 95 reports/s (on req)
   // in Stream mode (R) : up to 55 reports/s on mouse state change 
-  DECmode == 'D' ? delay(6) : delay(12); 
+  DECmode == 'D' ? delay(6) : delay(12); // on my setup, this provides between 50 and 55 reports/second in stream mode. Good enough for responsive mouse.
 
 }
 
